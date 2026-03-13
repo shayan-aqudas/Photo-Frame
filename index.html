@@ -2,76 +2,47 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Hey Beautiful ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scroll Cards</title>
 
 <style>
+
 body{
-    margin:0;
-    padding:0;
-    font-family: Arial;
-    background: linear-gradient(135deg,#ffd6e7,#ffeef5);
-    text-align:center;
-    overflow-x:hidden;
+margin:0;
+padding:0;
+background:#f3f3f3;
+font-family:sans-serif;
+display:flex;
+justify-content:center;
 }
 
 .container{
-    margin-top:80px;
+width:100%;
+max-width:420px;
+padding:20px;
 }
 
-h1{
-    font-size:45px;
-    color:#ff2e6e;
+.card{
+background:white;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+margin:80px 0;
+padding:10px;
+transition:transform 0.3s ease;
 }
 
-p{
-    font-size:18px;
-    color:#444;
+.card img{
+width:100%;
+border-radius:8px;
 }
 
-.photo{
-    margin-top:30px;
+.caption{
+text-align:center;
+font-size:15px;
+margin-top:8px;
+color:#444;
 }
 
-.photo img{
-    width:250px;
-    border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.2);
-}
-
-button{
-    margin-top:30px;
-    padding:12px 25px;
-    font-size:18px;
-    border:none;
-    border-radius:25px;
-    background:#ff2e6e;
-    color:white;
-    cursor:pointer;
-}
-
-button:hover{
-    background:#ff4f85;
-}
-
-/* floating hearts */
-
-.heart{
-    position:fixed;
-    color:#ff2e6e;
-    font-size:20px;
-    animation:float 5s linear infinite;
-}
-
-@keyframes float{
-    0%{
-        transform:translateY(100vh);
-        opacity:1;
-    }
-    100%{
-        transform:translateY(-10vh);
-        opacity:0;
-    }
-}
 </style>
 </head>
 
@@ -79,45 +50,53 @@ button:hover{
 
 <div class="container">
 
-<h1>Hey Beautiful ❤️</h1>
-
-<p>
-You make my life brighter every single day ✨  
-I'm lucky to have you.
-</p>
-
-<div class="photo">
-<img src="yourphoto.jpg">
+<div class="card">
+<img src="image.jpg">
+<div class="caption">Tum muskan mein jaan ho...</div>
 </div>
 
-<p id="message"></p>
+<div class="card">
+<img src="image.jpg">
+<div class="caption">Card 2</div>
+</div>
 
-<button onclick="showLove()">Click Here</button>
+<div class="card">
+<img src="image.jpg">
+<div class="caption">Card 3</div>
+</div>
+
+<div class="card">
+<img src="image.jpg">
+<div class="caption">Card 4</div>
+</div>
+
+<div class="card">
+<img src="image.jpg">
+<div class="caption">Card 5</div>
+</div>
 
 </div>
 
 <script>
 
-function showLove(){
-document.getElementById("message").innerHTML =
-"I just want you to know that I love you more than anything in this world ❤️";
-}
+const cards=document.querySelectorAll(".card");
 
-function createHeart(){
-const heart=document.createElement("div");
-heart.classList.add("heart");
-heart.innerHTML="❤";
-heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=Math.random()*20+10+"px";
+window.addEventListener("scroll",()=>{
 
-document.body.appendChild(heart);
+cards.forEach(card=>{
 
-setTimeout(()=>{
-heart.remove();
-},5000);
-}
+let rect=card.getBoundingClientRect();
+let center=window.innerHeight/2;
 
-setInterval(createHeart,300);
+let rotate=(rect.top-center)/40;
+
+rotate=Math.max(-10,Math.min(10,rotate));
+
+card.style.transform=`rotateY(${rotate}deg)`;
+
+});
+
+});
 
 </script>
 
