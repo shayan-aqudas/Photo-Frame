@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hey Beautiful ❤️</title>
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    font-family: Arial;
+    background: linear-gradient(135deg,#ffd6e7,#ffeef5);
+    text-align:center;
+    overflow-x:hidden;
+}
+
+.container{
+    margin-top:80px;
+}
+
+h1{
+    font-size:45px;
+    color:#ff2e6e;
+}
+
+p{
+    font-size:18px;
+    color:#444;
+}
+
+.photo{
+    margin-top:30px;
+}
+
+.photo img{
+    width:250px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+button{
+    margin-top:30px;
+    padding:12px 25px;
+    font-size:18px;
+    border:none;
+    border-radius:25px;
+    background:#ff2e6e;
+    color:white;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#ff4f85;
+}
+
+/* floating hearts */
+
+.heart{
+    position:fixed;
+    color:#ff2e6e;
+    font-size:20px;
+    animation:float 5s linear infinite;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(100vh);
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-10vh);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Hey Beautiful ❤️</h1>
+
+<p>
+You make my life brighter every single day ✨  
+I'm lucky to have you.
+</p>
+
+<div class="photo">
+<img src="yourphoto.jpg">
+</div>
+
+<p id="message"></p>
+
+<button onclick="showLove()">Click Here</button>
+
+</div>
+
+<script>
+
+function showLove(){
+document.getElementById("message").innerHTML =
+"I just want you to know that I love you more than anything in this world ❤️";
+}
+
+function createHeart(){
+const heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="❤";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=Math.random()*20+10+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},5000);
+}
+
+setInterval(createHeart,300);
+
+</script>
+
+</body>
+</html>
